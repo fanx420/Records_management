@@ -136,8 +136,8 @@ include 'connect.php';
                     <img src="assets/default_pfp.jpg" alt="">
                 </div>
                 <div class="menu my-5">
-                    <a href="index.php" class="active">Classroom Inspection</a>
-                    <a href="electricalRoomInspection.php">Electrical Room Inspection</a>
+                    <a href="index.php" >Classroom Inspection</a>
+                    <a href="electricalRoomInspection.php" class="active">Electrical Room Inspection</a>
                     <a href="#">Reports Trough Engineering Email</a>
                 </div>
 
@@ -147,33 +147,66 @@ include 'connect.php';
             <div class="col-md-10 content my-5 p-5">
                 <div class="row">
                     <div class="col-12 col-md-4 my-3 ">
-                        <a href="upperRoom.php">
+                        <a href="basement.php">
                             <div class="card shadow p-5">
                                 <div class="card-title fw-bold text-center">
                                     <h2>
-                                        Upper School
+                                        Basement
                                     </h2>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="col-12 col-md-4 my-3">
-                        <a href="middleRoom.php">
+                        <a href="1stFloor.php">
                             <div class="card shadow p-5">
                                 <div class="card-title fw-bold text-center">
                                     <h2>
-                                        Middle School
+                                        1st Floor
                                     </h2>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="col-12 col-md-4 my-3">
-                        <a href="lowerRoom.php">
+                        <a href="2ndFloor.php">
                             <div class="card shadow p-5">
                                 <div class="card-title fw-bold text-center">
                                     <h2>
-                                        Lower School
+                                        2nd Floor
+                                    </h2>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4 my-3">
+                        <a href="3rdFloor.php">
+                            <div class="card shadow p-5">
+                                <div class="card-title fw-bold text-center">
+                                    <h2>
+                                        3rd Floor
+                                    </h2>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4 my-3">
+                        <a href="4thFloor.php">
+                            <div class="card shadow p-5">
+                                <div class="card-title fw-bold text-center">
+                                    <h2>
+                                        4th Floor
+                                    </h2>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4 my-3">
+                        <a href="elc.php">
+                            <div class="card shadow p-5">
+                                <div class="card-title fw-bold text-center">
+                                    <h2>
+                                        ELC
                                     </h2>
                                 </div>
                             </div>

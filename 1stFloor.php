@@ -1,8 +1,14 @@
 <?php
 include 'connect.php';
+
+$query = "SELECT * FROM electrical_room_inspection WHERE floor LIKE '1st_floor'";
+$result = executeQuery($query);
+$records = $result->fetch_all(MYSQLI_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -107,12 +113,8 @@ include 'connect.php';
             animation: cardHover 0.5 forwards;
         }
 
-        .card {
-            cursor: pointer;
-            
-        }
-        a{
-            text-decoration: none;
+        th {
+            text-align: center;
         }
     </style>
 </head>
@@ -136,8 +138,8 @@ include 'connect.php';
                     <img src="assets/default_pfp.jpg" alt="">
                 </div>
                 <div class="menu my-5">
-                    <a href="index.php" class="active">Classroom Inspection</a>
-                    <a href="electricalRoomInspection.php">Electrical Room Inspection</a>
+                    <a href="index.php" >Classroom Inspection</a>
+                    <a href="electricalRoomInspection.php" class="active">Electrical Room Inspection</a>
                     <a href="#">Reports Trough Engineering Email</a>
                 </div>
 
@@ -145,39 +147,50 @@ include 'connect.php';
 
 
             <div class="col-md-10 content my-5 p-5">
-                <div class="row">
-                    <div class="col-12 col-md-4 my-3 ">
-                        <a href="upperRoom.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        Upper School
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="middleRoom.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        Middle School
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="lowerRoom.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        Lower School
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
+
+
+                <div class="table-responsive ">
+                    <h2>1st Floor</h2>
+                    <table class="table">
+                        <thead class="table-dark">
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Area
+                            </th>
+                            <th>
+                                Transformer
+                            </th>
+                            <th>
+                                Findings
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </thead>
+                        <tbody class="text-center">
+                            <?php
+                            foreach ($records as $record): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($record['date']) ?></td>
+                                    <td><?= htmlspecialchars($record['area']) ?></td>
+                                    <td><?= htmlspecialchars($record['transformer']) ?></td>
+                                    <td><?= htmlspecialchars($record['findings']) ?></td>
+                                    <td>
+                                        <form action="editBasement.php" method="GET"><input type="hidden" name="id" value="<?= $record['id'] ?>"><button type="submit" class="btn btn-primary">Edit</button">
+                                        </form>
+                                    </td>
+
+                                </tr>
+
+                            <?php endforeach; ?>
+
+                        </tbody>
+
+                    </table>
+                    <div class="btn-container d-flex justify-content-end">
+                        <a href="add1stFloor.php"> <button class="btn btn-primary"> Add Report</button></a>
                     </div>
                 </div>
             </div>

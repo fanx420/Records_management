@@ -3,6 +3,7 @@ include 'connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -109,9 +110,10 @@ include 'connect.php';
 
         .card {
             cursor: pointer;
-            
+
         }
-        a{
+
+        a {
             text-decoration: none;
         }
     </style>
@@ -136,8 +138,8 @@ include 'connect.php';
                     <img src="assets/default_pfp.jpg" alt="">
                 </div>
                 <div class="menu my-5">
-                    <a href="index.php" class="active">Classroom Inspection</a>
-                    <a href="electricalRoomInspection.php">Electrical Room Inspection</a>
+                    <a href="index.php">Classroom Inspection</a>
+                    <a href="electricalRoomInspection.php" class="active">Electrical Room Inspection</a>
                     <a href="#">Reports Trough Engineering Email</a>
                 </div>
 
@@ -145,41 +147,51 @@ include 'connect.php';
 
 
             <div class="col-md-10 content my-5 p-5">
-                <div class="row">
-                    <div class="col-12 col-md-4 my-3 ">
-                        <a href="upperRoom.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        Upper School
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
+                <h2>Add 2nd Floor Report</h2>
+                <form action="addReport2ndFloor.php" method="POST">
+                    <table class="table">
+                        <thead class="table-dark">
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Area
+                            </th>
+                            <th>
+                                Transformer
+                            </th>
+                            <th>
+                                Findings
+                            </th>
+                        </thead>
+
+                        <tbody>
+                            <?php
+                            for ($i = 0; $i < 4; $i++) {
+                                echo '<tr>';
+                                echo '<td><input type="date" name="date[]" class="form-control" ></td>';
+                                echo '<td><input type="text" name="area[]" class="form-control" ></td>';
+                                echo '<td>
+                                        <select name="transformer[]" class="form-control" >
+                                            <option value="">Select Transformer</option>
+                                            <option value="T1">Transformer 1</option>
+                                            <option value="T2">Transformer 2</option>
+                                            <option value="T3">Transformer 3</option>
+                                            <option value="T4">Transformer 4</option>
+                                        </select>
+                                      </td>';
+                                echo '<td><textarea name="findings[]" class="form-control" ></textarea></td>';
+                                echo '<input type="hidden" name="floor[]" value="2nd_floor">';
+                                echo '</tr>';
+                            }
+                            ?>
+
+                        </tbody>
+                    </table>
+                    <div class="btn-container text-end">
+                        <button type="submit" name="submit" class="btn btn-primary">Add Report</button>
                     </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="middleRoom.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        Middle School
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="lowerRoom.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        Lower School
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
