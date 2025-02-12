@@ -3,6 +3,7 @@ include 'connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,12 +96,10 @@ include 'connect.php';
 
         @keyframes cardHover {
             from {
-                color: black;
                 transform: scale(1);
             }
 
             to {
-                color: red;
                 transform: scale(1.1);
             }
         }
@@ -111,9 +110,10 @@ include 'connect.php';
 
         .card {
             cursor: pointer;
-            
+
         }
-        a{
+
+        a {
             text-decoration: none;
         }
     </style>
@@ -138,7 +138,7 @@ include 'connect.php';
                     <img src="assets/default_pfp.jpg" alt="">
                 </div>
                 <div class="menu my-5">
-                    <a href="index.php" >Classroom Inspection</a>
+                    <a href="index.php">Classroom Inspection</a>
                     <a href="electricalRoomInspection.php" class="active">Electrical Room Inspection</a>
                     <a href="#">Reports Trough Engineering Email</a>
                 </div>
@@ -147,74 +147,51 @@ include 'connect.php';
 
 
             <div class="col-md-10 content my-5 p-5">
-                <div class="row">
-                    <div class="col-12 col-md-4 my-3 ">
-                        <a href="basement.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        Basement
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
+                <h2>Add 3rd Floor Report</h2>
+                <form action="addReport3rdFloor.php" method="POST">
+                    <table class="table">
+                        <thead class="table-dark">
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Area
+                            </th>
+                            <th>
+                                Transformer
+                            </th>
+                            <th>
+                                Findings
+                            </th>
+                        </thead>
+
+                        <tbody>
+                            <?php
+                            for ($i = 0; $i < 4; $i++) {
+                                echo '<tr>';
+                                echo '<td><input type="date" name="date[]" class="form-control" ></td>';
+                                echo '<td><input type="text" name="area[]" class="form-control" ></td>';
+                                echo '<td>
+                                        <select name="transformer[]" class="form-control" >
+                                            <option value="">Select Transformer</option>
+                                            <option value="T1">Transformer 1</option>
+                                            <option value="T2">Transformer 2</option>
+                                            <option value="T3">Transformer 3</option>
+                                            <option value="T4">Transformer 4</option>
+                                        </select>
+                                      </td>';
+                                echo '<td><textarea name="findings[]" class="form-control" ></textarea></td>';
+                                echo '<input type="hidden" name="floor[]" value="3rd_floor">';
+                                echo '</tr>';
+                            }
+                            ?>z 
+
+                        </tbody>
+                    </table>
+                    <div class="btn-container text-end">
+                        <button type="submit" name="submit" class="btn btn-primary">Add Report</button>
                     </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="1stFloor.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        1st Floor
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="2ndFloor.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        2nd Floor
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="3rdFloor.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        3rd Floor
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="4thFloor.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        4th Floor
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="elc.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        ELC
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

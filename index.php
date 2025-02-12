@@ -95,13 +95,17 @@ include 'connect.php';
 
         @keyframes cardHover {
             from {
+                color: black;
                 transform: scale(1);
             }
 
             to {
+                color: red;
                 transform: scale(1.1);
             }
         }
+     
+
 
         .card:hover {
             animation: cardHover 0.5 forwards;

@@ -18,14 +18,14 @@ if(isset($_GET['id'])) {
     if(!$row) {
         echo "<script>
                 alert('Record not found');
-                window.location.href = 'basement.php';
+                window.location.href = '4thFloor.php';
               </script>";
         exit();
     }
 } else {
     echo "<script>
             alert('No record ID provided');
-            window.location.href = 'basement.php';
+            window.location.href = '4thFloor.php';
           </script>";
     exit();
 }
@@ -65,7 +65,7 @@ if(isset($_POST['update'])) {
         if($stmt->execute()) {
             echo "<script>
                     alert('Report updated successfully!');
-                    window.location.href = 'basement.php';
+                    window.location.href = '4thFloor.php';
                   </script>";
             exit();
         } else {
@@ -85,12 +85,12 @@ if(isset($_POST['update'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Basement Report</title>
+    <title>Edit 4th Floor Report</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Edit Basement Report</h2>
+        <h2>Edit 4th Floor Report</h2>
         <?php if($row): ?>
         <form method="POST">
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
@@ -123,11 +123,11 @@ if(isset($_POST['update'])) {
                 <textarea class="form-control" name="findings" required><?php echo htmlspecialchars($row['findings']); ?></textarea>
             </div>
 
-            <input type="hidden" name="floor" value="basement">
+            <input type="hidden" name="floor" value="4th_floor">
 
             <div class="mb-3">
                 <button type="submit" name="update" class="btn btn-primary">Update Report</button>
-                <a href="basement.php" class="btn btn-secondary">Cancel</a>
+                <a href="4thFloor.php" class="btn btn-secondary">Cancel</a>
             </div>
         </form>
         <?php endif; ?>

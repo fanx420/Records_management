@@ -1,8 +1,14 @@
 <?php
 include 'connect.php';
+
+$query = "SELECT * FROM electrical_room_inspection WHERE floor LIKE '3rd_floor'";
+$result = executeQuery($query);
+$records = $result->fetch_all(MYSQLI_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,12 +101,10 @@ include 'connect.php';
 
         @keyframes cardHover {
             from {
-                color: black;
                 transform: scale(1);
             }
 
             to {
-                color: red;
                 transform: scale(1.1);
             }
         }
@@ -109,12 +113,8 @@ include 'connect.php';
             animation: cardHover 0.5 forwards;
         }
 
-        .card {
-            cursor: pointer;
-            
-        }
-        a{
-            text-decoration: none;
+        th {
+            text-align: center;
         }
     </style>
 </head>
@@ -147,72 +147,50 @@ include 'connect.php';
 
 
             <div class="col-md-10 content my-5 p-5">
-                <div class="row">
-                    <div class="col-12 col-md-4 my-3 ">
-                        <a href="basement.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        Basement
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="1stFloor.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        1st Floor
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="2ndFloor.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        2nd Floor
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="3rdFloor.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        3rd Floor
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="4thFloor.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        4th Floor
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-12 col-md-4 my-3">
-                        <a href="elc.php">
-                            <div class="card shadow p-5">
-                                <div class="card-title fw-bold text-center">
-                                    <h2>
-                                        ELC
-                                    </h2>
-                                </div>
-                            </div>
-                        </a>
+
+
+                <div class="table-responsive ">
+                    <h2>3rd Floor</h2>
+                    <table class="table">
+                        <thead class="table-dark">
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Area
+                            </th>
+                            <th>
+                                Transformer
+                            </th>
+                            <th>
+                                Findings
+                            </th>
+                            <th>
+                                Actions
+                            </th>
+                        </thead>
+                        <tbody class="text-center">
+                            <?php
+                            foreach ($records as $record): ?>
+                                <tr>
+                                    <td><?= htmlspecialchars($record['date']) ?></td>
+                                    <td><?= htmlspecialchars($record['area']) ?></td>
+                                    <td><?= htmlspecialchars($record['transformer']) ?></td>
+                                    <td><?= htmlspecialchars($record['findings']) ?></td>
+                                    <td>
+                                        <form action="edit3rdFloor.php" method="GET"><input type="hidden" name="id" value="<?= $record['id'] ?>"><button type="submit" class="btn btn-primary">Edit</button">
+                                        </form>
+                                    </td>
+
+                                </tr>
+
+                            <?php endforeach; ?>
+
+                        </tbody>
+
+                    </table>
+                    <div class="btn-container d-flex justify-content-end">
+                        <a href="add3rdFloor.php"> <button class="btn btn-primary"> Add Report</button></a>
                     </div>
                 </div>
             </div>
