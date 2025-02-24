@@ -109,13 +109,8 @@ if(isset($_POST['update'])) {
 
             <div class="mb-3">
                 <label class="form-label">Transformer</label>
-                <select name="transformer" class="form-control" required>
-                    <option value="">Select Transformer</option>
-                    <option value="T1" <?php if($row['transformer'] == 'T1') echo 'selected'; ?>>Transformer 1</option>
-                    <option value="T2" <?php if($row['transformer'] == 'T2') echo 'selected'; ?>>Transformer 2</option>
-                    <option value="T3" <?php if($row['transformer'] == 'T3') echo 'selected'; ?>>Transformer 3</option>
-                    <option value="T4" <?php if($row['transformer'] == 'T4') echo 'selected'; ?>>Transformer 4</option>
-                </select>
+                <input type="text" class="form-control" name="transformer" 
+                       value="<?php echo htmlspecialchars($row['transformer']); ?>" readonly>
             </div>
 
             <div class="mb-3">

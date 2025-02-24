@@ -13,7 +13,7 @@ if(isset($_POST['submit'])) {
     
     // Loop through the arrays and insert each record
     for($i = 0; $i < count($dates); $i++) {
-        if(!empty($dates[$i]) && !empty($areas[$i]) && !empty($transformers[$i]) && !empty($findings[$i])) {
+        if(!empty($dates[$i]) && !empty($areas[$i]) && !empty($findings[$i])) {
             $sql = "INSERT INTO electrical_room_inspection (date, area, transformer, findings, floor) 
                     VALUES (?, ?, ?, ?, ?)";
             

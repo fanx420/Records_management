@@ -139,7 +139,7 @@ $records = $result->fetch_all(MYSQLI_ASSOC);
                 </div>
                 <div class="menu my-5">
                     <a href="index.php">Classroom Inspection</a>
-                    <a href="elc.php" class="active">Electrical Room Inspection</a>
+                    <a href="electricalRoomInspection.php" class="active">Electrical Room Inspection</a>
                     <a href="#">Reports Through Engineering Email</a>
                 </div>
 

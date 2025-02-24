@@ -3,6 +3,7 @@ include 'connect.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -166,19 +167,15 @@ include 'connect.php';
 
                         <tbody>
                             <?php
-                           for ($i = 0; $i < 4; $i++) {
+                            $areas = ['Admissions', 'Cafeteria', 'Fine Arts', 'Lower School', 'Middle School', 'Upper School'];
+                            $transformers = ['75 kVA, 480V-240v', '', '', '25 kVA (480V-240v)','37.5 kVA (480V-240v)','37.5 kVA (480V-240v)'];
+
+                            for ($i = 0; $i < count($areas); $i++) {
                                 echo '<tr>';
                                 echo '<td><input type="date" name="date[]" class="form-control" ></td>';
-                                echo '<td><input type="text" name="area[]" class="form-control" ></td>';
-                                echo '<td>
-                                        <select name="transformer[]" class="form-control" >
-                                            <option value="">Select Transformer</option>
-                                            <option value="T1">Transformer 1</option>
-                                            <option value="T2">Transformer 2</option>
-                                            <option value="T3">Transformer 3</option>
-                                            <option value="T4">Transformer 4</option>
-                                        </select>
-                                      </td>';
+                                echo '<td><input type="text" name="area[]" class="form-control" value ="' . $areas[$i] . '" readonly></td>';
+                                echo '<td><input type="text" name="transformer[]" class="form-control" value ="' . $transformers[$i] . '" readonly>
+                                 </td>';
                                 echo '<td><textarea name="findings[]" class="form-control" ></textarea></td>';
                                 echo '<input type="hidden" name="floor[]" value="1st_floor">';
                                 echo '</tr>';
